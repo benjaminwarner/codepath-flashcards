@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/flashcardQuestion"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:background="@android:color/holo_blue_bright"
+        android:gravity="center"
+        android:text="What is the technical term for a cats hairball?"
+        android:textAlignment="center"
+        android:textSize="40sp" />
+
+    <Button
+        android:id="@+id/coalquatButton"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginBottom="190dp"
+        android:background="@android:color/holo_orange_light"
+        android:text="Coalquat"
+        android:textColor="@android:color/black" />
+
+    <Button
+        android:id="@+id/bezoarButton"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginBottom="130dp"
+        android:background="@android:color/holo_orange_light"
+        android:text="Bezoar"
+        android:textColor="@android:color/black" />
+
+    <Button
+        android:id="@+id/hairylollipopButton"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginBottom="70dp"
+        android:background="@android:color/holo_orange_light"
+        android:text="Hairy Lollipop"
+        android:textColor="@android:color/black" />
+</RelativeLayout>
