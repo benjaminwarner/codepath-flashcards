@@ -35,7 +35,8 @@
         android:background="@android:color/holo_orange_light"
         android:onClick="incorrectAnswerClicked"
         android:text="Coalquat"
-        android:textColor="@android:color/black" />
+        android:textColor="@android:color/black"
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/bezoarButton"
@@ -49,7 +50,8 @@
         android:background="@android:color/holo_orange_light"
         android:onClick="correctAnswerClicked"
         android:text="Bezoar"
-        android:textColor="@android:color/black" />
+        android:textColor="@android:color/black"
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/hairylollipopButton"
@@ -63,5 +65,6 @@
         android:background="@android:color/holo_orange_light"
         android:onClick="incorrectAnswerClicked"
         android:text="Hairy Lollipop"
-        android:textColor="@android:color/black" />
+        android:textColor="@android:color/black"
+        android:textSize="20sp" />
 </RelativeLayout>
