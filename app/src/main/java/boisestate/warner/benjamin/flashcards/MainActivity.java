@@ -10,38 +10,32 @@ public class MainActivity extends AppCompatActivity {
 
     int correctAnswerColor = Color.rgb(46, 204, 113);
     int incorrectAnswerColor = Color.rgb(231, 76, 60);
+    int startingAnswerColor = Color.parseColor("#ffffbb33");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+    }
 
-        findViewById(R.id.coalquatButton).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Button coalquatButton = findViewById(R.id.coalquatButton);
-                coalquatButton.setBackgroundColor(incorrectAnswerColor);
-                Button bezoarButton = findViewById(R.id.bezoarButton);
-                bezoarButton.setBackgroundColor(correctAnswerColor);
-            }
-        });
+    public void incorrectAnswerClicked(View v) {
+        Button incorrectButton = (Button)v;
+        incorrectButton.setBackgroundColor(incorrectAnswerColor);
+        Button bezoarButton = findViewById(R.id.bezoarButton);
+        bezoarButton.setBackgroundColor(correctAnswerColor);
+    }
 
-        findViewById(R.id.bezoarButton).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Button bezoarButton = findViewById(R.id.bezoarButton);
-                bezoarButton.setBackgroundColor(correctAnswerColor);
-            }
-        });
+    public void correctAnswerClicked(View v) {
+        Button correctButton = (Button)v;
+        correctButton.setBackgroundColor(correctAnswerColor);
+    }
 
-        findViewById(R.id.hairylollipopButton).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Button hairylollipopButton = findViewById(R.id.hairylollipopButton);
-                hairylollipopButton.setBackgroundColor(incorrectAnswerColor);
-                Button bezoarButton = findViewById(R.id.bezoarButton);
-                bezoarButton.setBackgroundColor(correctAnswerColor);
-            }
-        });
+    public void backgroundClicked(View v) {
+        Button hairylollipopButton = findViewById(R.id.hairylollipopButton);
+        hairylollipopButton.setBackgroundColor(startingAnswerColor);
+        Button bezoarButton = findViewById(R.id.bezoarButton);
+        bezoarButton.setBackgroundColor(startingAnswerColor);
+        Button coalquatButton = findViewById(R.id.coalquatButton);
+        coalquatButton.setBackgroundColor(startingAnswerColor);
     }
 }
