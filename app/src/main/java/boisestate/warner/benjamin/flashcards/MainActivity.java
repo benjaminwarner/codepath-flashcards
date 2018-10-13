@@ -1,16 +1,15 @@
 package boisestate.warner.benjamin.flashcards;
 
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.ColorFilter;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
-
-    int correctAnswerColor = Color.rgb(46, 204, 113);
-    int incorrectAnswerColor = Color.rgb(231, 76, 60);
-    int startingAnswerColor = Color.parseColor("#ffffbb33");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,22 +19,22 @@ public class MainActivity extends AppCompatActivity {
 
     public void incorrectAnswerClicked(View v) {
         Button incorrectButton = (Button)v;
-        incorrectButton.setBackgroundColor(incorrectAnswerColor);
+        incorrectButton.setBackground(getDrawable(R.drawable.incorrect_answer_button_shape));
         Button bezoarButton = findViewById(R.id.bezoarButton);
-        bezoarButton.setBackgroundColor(correctAnswerColor);
+        bezoarButton.setBackground(getDrawable(R.drawable.correct_answer_button_shape));
     }
 
     public void correctAnswerClicked(View v) {
         Button correctButton = (Button)v;
-        correctButton.setBackgroundColor(correctAnswerColor);
+        correctButton.setBackground(getDrawable(R.drawable.correct_answer_button_shape));
     }
 
     public void backgroundClicked(View v) {
         Button hairylollipopButton = findViewById(R.id.hairylollipopButton);
-        hairylollipopButton.setBackgroundColor(startingAnswerColor);
+        hairylollipopButton.setBackground(getDrawable(R.drawable.answer_button_shape));
         Button bezoarButton = findViewById(R.id.bezoarButton);
-        bezoarButton.setBackgroundColor(startingAnswerColor);
+        bezoarButton.setBackground(getDrawable(R.drawable.answer_button_shape));
         Button coalquatButton = findViewById(R.id.coalquatButton);
-        coalquatButton.setBackgroundColor(startingAnswerColor);
+        coalquatButton.setBackground(getDrawable(R.drawable.answer_button_shape));
     }
 }
