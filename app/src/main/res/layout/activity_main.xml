@@ -5,6 +5,7 @@
     android:id="@+id/rootView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:onClick="backgroundClicked"
     tools:context=".MainActivity">
 
     <TextView
@@ -15,10 +16,11 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="0dp"
         android:layout_marginTop="0dp"
-        android:background="@android:color/holo_blue_bright"
+        android:background="@drawable/solid_color_shape"
         android:gravity="center"
         android:text="What is the technical term for a cats hairball?"
         android:textAlignment="center"
+        android:textColor="@android:color/background_light"
         android:textSize="40sp" />
 
     <Button
@@ -31,6 +33,7 @@
         android:layout_marginStart="0dp"
         android:layout_marginBottom="190dp"
         android:background="@android:color/holo_orange_light"
+        android:onClick="incorrectAnswerClicked"
         android:text="Coalquat"
         android:textColor="@android:color/black" />
 
@@ -44,6 +47,7 @@
         android:layout_marginStart="0dp"
         android:layout_marginBottom="130dp"
         android:background="@android:color/holo_orange_light"
+        android:onClick="correctAnswerClicked"
         android:text="Bezoar"
         android:textColor="@android:color/black" />
 
@@ -57,6 +61,7 @@
         android:layout_marginStart="0dp"
         android:layout_marginBottom="70dp"
         android:background="@android:color/holo_orange_light"
+        android:onClick="incorrectAnswerClicked"
         android:text="Hairy Lollipop"
         android:textColor="@android:color/black" />
 </RelativeLayout>
