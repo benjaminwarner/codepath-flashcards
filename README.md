@@ -5,13 +5,9 @@
 FlashCards is an app that allows a user to test there knowledge for 
 a random assortment of facts.
 
-### Incorrect Answer Selected
+### App Usage
 
-<img src="incorrect-answer-selected.gif" width=500><br>
-
-### Correct Answer Selected
-
-<img src="correct-answer-selected.gif" width=500><br>
+<img src="app-usage.gif" width=500><br>
 
 ### Required User Stories
 
@@ -20,9 +16,9 @@ a random assortment of facts.
 
 ### Optional User Stories
 
-- [ ] 1. Build in logic to toggle the flashcard between the question side and the answer side.
+- [x] 1. Build in logic to toggle the flashcard between the question side and the answer side.
 - [x] 2. Style the question and answer side of the card to better distinguish between the two sides.
-- [ ] 3. Further customize and style the card.
+- [x] 3. Further customize and style the card.
 - [x] 4. Add selectable multiple choice answers beneath the card (essentially disabled the required user story 2).
 - [x] 5. Change the background color of the multiple choice answers when clicked to indicate whether the question was answered correctly.
 - [ ] 6. Add a button that will toggle hiding and showing the answer choices.
