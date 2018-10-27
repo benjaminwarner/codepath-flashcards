@@ -24,14 +24,14 @@
         android:textSize="40sp" />
 
     <Button
-        android:id="@+id/coalquatButton"
+        android:id="@+id/topAnswerButton"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="0dp"
-        android:layout_marginBottom="210dp"
+        android:layout_marginBottom="298dp"
         android:background="@drawable/answer_button_shape"
         android:onClick="incorrectAnswerClicked"
         android:text="Coalquat"
@@ -39,14 +39,14 @@
         android:textSize="18sp" />
 
     <Button
-        android:id="@+id/bezoarButton"
+        android:id="@+id/middleAnswerButton"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="0dp"
-        android:layout_marginBottom="130dp"
+        android:layout_marginBottom="220dp"
         android:background="@drawable/answer_button_shape"
         android:onClick="correctAnswerClicked"
         android:text="Bezoar"
@@ -54,17 +54,29 @@
         android:textSize="18sp" />
 
     <Button
-        android:id="@+id/hairylollipopButton"
+        android:id="@+id/bottomAnswerButton"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="0dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="143dp"
         android:background="@drawable/answer_button_shape"
         android:onClick="incorrectAnswerClicked"
         android:text="Hairy Lollipop"
         android:textColor="@android:color/black"
         android:textSize="18sp" />
+
+    <ImageView
+        android:id="@+id/addQuestionImageView"
+        android:layout_width="102dp"
+        android:layout_height="55dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="30dp"
+        android:onClick="navigateToAddNewQuestion"
+        app:srcCompat="@drawable/ic_plus_sign_in_a_black_circle" />
+
 </RelativeLayout>
