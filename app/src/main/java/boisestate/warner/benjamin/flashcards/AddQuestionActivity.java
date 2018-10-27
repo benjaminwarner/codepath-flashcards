@@ -21,6 +21,13 @@ public class AddQuestionActivity extends AppCompatActivity {
         answerEditor = findViewById(R.id.answerEditor);
         wrongAnswer1Editor = findViewById(R.id.wrongAnswer1Editor);
         wrongAnswer2Editor = findViewById(R.id.wrongAnswer2Editor);
+
+        Bundle data = getIntent().getExtras();
+        boolean edit = data.getBoolean("edit");
+        if (edit) {
+            questionEditor.setText(data.getString("existing_question"));
+            answerEditor.setText(data.getString("correct_answer"));
+        }
     }
 
     public void backButtonClicked(View v) {

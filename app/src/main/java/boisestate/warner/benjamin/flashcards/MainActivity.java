@@ -86,6 +86,15 @@ public class MainActivity extends AppCompatActivity {
     public void navigateToAddNewQuestion(View v) {
         ImageView addButton = (ImageView)v;
         Intent intent = new Intent(MainActivity.this, AddQuestionActivity.class);
+        intent.putExtra("edit", false);
+        MainActivity.this.startActivityForResult(intent, 0);
+    }
+
+    public void navigateToEditCurrentQuestion(View v) {
+        Intent intent = new Intent(MainActivity.this, AddQuestionActivity.class);
+        intent.putExtra("edit", true);
+        intent.putExtra("existing_question", flashcardQuestion.getText().toString());
+        intent.putExtra("correct_answer", correctAnswerButton.getText().toString());
         MainActivity.this.startActivityForResult(intent, 0);
     }
 }
