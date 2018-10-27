@@ -27,7 +27,7 @@ questions added are unavailable the next time the app runs).
 
 ### Optional User Stories
 
-- [ ] 1. User can edit a card
+- [x] 1. User can edit a card
 - [ ] 1. An error message is shown if the user doesn't supply a question and answer
 - [ ] 1. A notification is shown if the card was created successfully
 - [x] 1. User can also enter multiple choice answers when creating a card
