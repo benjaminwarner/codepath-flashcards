@@ -5,6 +5,30 @@
 FlashCards is an app that allows a user to test their knowledge for 
 a random assortment of facts.
 
+## Lab 3
+
+### App Description
+
+Lab 3 builds off of the functionality that a user can edit and add flash cards
+inside the app. Instead of losing edited cards or even new cards upon app exit,
+those changes are saved inside a database that the app accesses during runtime.
+
+### App Usage
+
+<img src="app-usage_lab3.gif" width=500><br>
+
+### Required User Stories
+
+- [x] 1. Allow a user to create a card and still see their created card when the app is relaunched.
+- [x] 2. User should be able to create multiple cards and browse through the deck (can go to next or previous).
+
+### Optional User Stories
+
+- [ ] 1. User should be able to delete a card and no longer see it in the deck
+- [ ] 2. Randomize the order in which the cards are shown
+- [x] 3. User should be able to edit a card and see the saved edit while browsing
+- [x] 4. Multiple choice
+
 ## Lab 2
 
 ### App Description
