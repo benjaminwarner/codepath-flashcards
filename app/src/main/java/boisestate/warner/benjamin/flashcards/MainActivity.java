@@ -8,11 +8,14 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
     private static Random RANDOM_NUMBER_GENERATOR = new Random();
+    private FlashcardDatabase database;
+    private List<Flashcard> allFlashCards;
 
     private ArrayList<Button> answerButtons = new ArrayList<Button>();
     private Button correctAnswerButton;
@@ -27,11 +30,22 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         answerButtons.add((Button)findViewById(R.id.topAnswerButton));
         answerButtons.add((Button)findViewById(R.id.middleAnswerButton));
         answerButtons.add((Button)findViewById(R.id.bottomAnswerButton));
         correctAnswerButton = (Button)findViewById(R.id.middleAnswerButton);
         flashcardQuestion = (TextView)findViewById(R.id.flashcardQuestion);
+
+        loadDatabase();
+    }
+
+    private void loadDatabase() {
+        database = new FlashcardDatabase(getApplicationContext());
+        allFlashCards = this.database.getAllCards();
+        if (allFlashCards.size() > 0) {
+            setAnswerButtonsAndQuestion(allFlashCards.get(0));
+        }
     }
 
     @Override
@@ -45,27 +59,43 @@ public class MainActivity extends AppCompatActivity {
             String wrongAnswer1 = extras.getString("wrong_answer1");
             String wrongAnswer2 = extras.getString("wrong_answer2");
 
+            database.insertCard(new Flashcard(newQuestion, newAnswer, wrongAnswer1, wrongAnswer2));
+            allFlashCards = database.getAllCards();
+
             resetAnswerButtonStates();
-            flashcardQuestion.setText(newQuestion);
-            int correctAnswerButtonIndex = RANDOM_NUMBER_GENERATOR.nextInt(answerButtons.size());
-            correctAnswerButton = answerButtons.get(correctAnswerButtonIndex);
-            correctAnswerButton.setText(newAnswer);
-            int counter = 0;
-            for (Button b : answerButtons) {
-                if (b.equals(correctAnswerButton))
-                    continue;
-                b.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        incorrectAnswerClicked(v);
-                    }
-                });
-                if (counter == 1)
-                    b.setText(wrongAnswer1);
-                else
-                    b.setText(wrongAnswer2);
-                counter += 1;
-            }
+            setAnswerButtonsAndQuestion(newQuestion, newAnswer, wrongAnswer1, wrongAnswer2);
+        }
+    }
+
+    private void setAnswerButtonsAndQuestion(Flashcard flashcard) {
+        setAnswerButtonsAndQuestion(
+                flashcard.getQuestion(),
+                flashcard.getAnswer(),
+                flashcard.getWrongAnswer1(),
+                flashcard.getWrongAnswer2()
+        );
+    }
+
+    private void setAnswerButtonsAndQuestion(String question, String answer, String wrong1, String wrong2) {
+        flashcardQuestion.setText(question);
+        int correctAnswerButtonIndex = RANDOM_NUMBER_GENERATOR.nextInt(answerButtons.size());
+        correctAnswerButton = answerButtons.get(correctAnswerButtonIndex);
+        correctAnswerButton.setText(answer);
+        int counter = 0;
+        for (Button b : answerButtons) {
+            if (b.equals(correctAnswerButton))
+                continue;
+            b.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    incorrectAnswerClicked(v);
+                }
+            });
+            if (counter == 1)
+                b.setText(wrong1);
+            else
+                b.setText(wrong2);
+            counter += 1;
         }
     }
 
