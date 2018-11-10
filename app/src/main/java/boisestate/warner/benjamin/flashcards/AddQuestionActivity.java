@@ -10,10 +10,10 @@ import android.widget.Toast;
 
 public class AddQuestionActivity extends AppCompatActivity {
 
-    EditText questionEditor;
-    EditText answerEditor;
-    EditText wrongAnswer1Editor;
-    EditText wrongAnswer2Editor;
+    private EditText questionEditor;
+    private EditText answerEditor;
+    private EditText wrongAnswer1Editor;
+    private EditText wrongAnswer2Editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

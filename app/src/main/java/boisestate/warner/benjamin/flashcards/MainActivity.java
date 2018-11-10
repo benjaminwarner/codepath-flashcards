@@ -22,6 +22,9 @@ public class MainActivity extends AppCompatActivity {
     private Button correctAnswerButton;
     private TextView flashcardQuestion;
 
+    public static int ADD_CARD_REQUEST_CODE = 0;
+    public static int EDIT_CARD_REQUEST_CODE = 1;
+
     private void resetAnswerButtonStates() {
         for (Button b : answerButtons)
             b.setBackground(getDrawable(R.drawable.answer_button_shape));
@@ -53,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         // If the user cancelled making a new question, we don't want to try and
         // get data that doesn't exist
-        if (requestCode == 0 && resultCode == RESULT_OK) {
+        if (requestCode == ADD_CARD_REQUEST_CODE && resultCode == RESULT_OK) {
             Bundle extras = data.getExtras();
             String newQuestion = extras.getString("question");
             String newAnswer = extras.getString("answer");
@@ -65,6 +68,23 @@ public class MainActivity extends AppCompatActivity {
 
             resetAnswerButtonStates();
             setAnswerButtonsAndQuestion(newQuestion, newAnswer, wrongAnswer1, wrongAnswer2);
+        } else if (requestCode == EDIT_CARD_REQUEST_CODE && resultCode == RESULT_OK) {
+            Bundle extras = data.getExtras();
+            String question = extras.getString("question");
+            String answer = extras.getString("answer");
+            String wrong1 = extras.getString("wrong_answer1");
+            String wrong2 = extras.getString("wrong_answer2");
+
+            Flashcard currentCard = allFlashCards.get(currentDisplayIndex);
+            currentCard.setQuestion(question);
+            currentCard.setAnswer(answer);
+            currentCard.setWrongAnswer1(wrong1);
+            currentCard.setWrongAnswer2(wrong2);
+            database.updateCard(currentCard);
+            allFlashCards = database.getAllCards();
+
+            resetAnswerButtonStates();
+            setAnswerButtonsAndQuestion(question, answer, wrong1, wrong2);
         }
     }
 
@@ -118,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
         ImageView addButton = (ImageView)v;
         Intent intent = new Intent(MainActivity.this, AddQuestionActivity.class);
         intent.putExtra("edit", false);
-        MainActivity.this.startActivityForResult(intent, 0);
+        MainActivity.this.startActivityForResult(intent, ADD_CARD_REQUEST_CODE);
     }
 
     public void navigateToEditCurrentQuestion(View v) {
@@ -126,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("edit", true);
         intent.putExtra("existing_question", flashcardQuestion.getText().toString());
         intent.putExtra("correct_answer", correctAnswerButton.getText().toString());
-        MainActivity.this.startActivityForResult(intent, 0);
+        MainActivity.this.startActivityForResult(intent, EDIT_CARD_REQUEST_CODE);
     }
 
     public void goToNextQuestion(View v) {
