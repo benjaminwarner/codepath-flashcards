@@ -29,6 +29,10 @@ those changes are saved inside a database that the app accesses during runtime.
 - [x] 3. User should be able to edit a card and see the saved edit while browsing
 - [x] 4. Multiple choice
 
+### Unique User Stories
+
+1. The correct answer button is randomly selected when the user browses through the deck
+
 ## Lab 2
 
 ### App Description
@@ -56,6 +60,10 @@ questions added are unavailable the next time the app runs).
 - [ ] 1. A notification is shown if the card was created successfully
 - [x] 1. User can also enter multiple choice answers when creating a card
 - [ ] 1. App is further styled and customized
+
+### Unique User Stories
+
+1. The correct answer button is randomly selected when the user adds/edits a question
 
 ## Lab 1
 
