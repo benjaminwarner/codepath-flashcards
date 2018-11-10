@@ -68,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
 
             resetAnswerButtonStates();
             setAnswerButtonsAndQuestion(newQuestion, newAnswer, wrongAnswer1, wrongAnswer2);
+            currentDisplayIndex = allFlashCards.size() - 1;
         } else if (requestCode == EDIT_CARD_REQUEST_CODE && resultCode == RESULT_OK) {
             Bundle extras = data.getExtras();
             String question = extras.getString("question");
