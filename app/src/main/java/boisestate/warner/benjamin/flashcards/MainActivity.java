@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     private static Random RANDOM_NUMBER_GENERATOR = new Random();
     private FlashcardDatabase database;
     private List<Flashcard> allFlashCards;
+    private int currentDisplayIndex = 0;
 
     private ArrayList<Button> answerButtons = new ArrayList<Button>();
     private Button correctAnswerButton;
@@ -126,5 +127,21 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("existing_question", flashcardQuestion.getText().toString());
         intent.putExtra("correct_answer", correctAnswerButton.getText().toString());
         MainActivity.this.startActivityForResult(intent, 0);
+    }
+
+    public void goToNextQuestion(View v) {
+        if (currentDisplayIndex >= allFlashCards.size() - 1)
+            return;
+        currentDisplayIndex++;
+        Flashcard nextCard = allFlashCards.get(currentDisplayIndex);
+        setAnswerButtonsAndQuestion(nextCard);
+    }
+
+    public void goToPreviousQuestion(View v) {
+        if (currentDisplayIndex <= 0)
+            return;
+        currentDisplayIndex--;
+        Flashcard previousCard = allFlashCards.get(currentDisplayIndex);
+        setAnswerButtonsAndQuestion(previousCard);
     }
 }

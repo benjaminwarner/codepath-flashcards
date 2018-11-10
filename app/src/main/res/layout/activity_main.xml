@@ -31,7 +31,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="0dp"
-        android:layout_marginBottom="298dp"
+        android:layout_marginBottom="315dp"
         android:background="@drawable/answer_button_shape"
         android:onClick="incorrectAnswerClicked"
         android:text="Coalquat"
@@ -46,7 +46,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="0dp"
-        android:layout_marginBottom="220dp"
+        android:layout_marginBottom="240dp"
         android:background="@drawable/answer_button_shape"
         android:onClick="correctAnswerClicked"
         android:text="Bezoar"
@@ -61,7 +61,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="0dp"
-        android:layout_marginBottom="143dp"
+        android:layout_marginBottom="165dp"
         android:background="@drawable/answer_button_shape"
         android:onClick="incorrectAnswerClicked"
         android:text="Hairy Lollipop"
@@ -89,5 +89,28 @@
         android:layout_marginBottom="30dp"
         android:onClick="navigateToEditCurrentQuestion"
         app:srcCompat="@drawable/ic_edit" />
+
+    <ImageView
+        android:id="@+id/nextQuestionImageView"
+        android:layout_width="102dp"
+        android:layout_height="55dp"
+        android:layout_alignTop="@+id/addQuestionImageView"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="110dp"
+        android:layout_marginTop="-70dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="210dp"
+        android:onClick="goToNextQuestion"
+        app:srcCompat="@drawable/ic_right" />
+
+    <ImageView
+        android:layout_width="102dp"
+        android:layout_height="55dp"
+        android:layout_alignStart="@+id/editQuestionImageView"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="448dp"
+        android:onClick="goToPreviousQuestion"
+        app:srcCompat="@drawable/ic_left" />
 
 </RelativeLayout>
