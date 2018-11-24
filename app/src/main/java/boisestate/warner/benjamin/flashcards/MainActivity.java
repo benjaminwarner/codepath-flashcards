@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -140,6 +142,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, AddQuestionActivity.class);
         intent.putExtra("edit", false);
         MainActivity.this.startActivityForResult(intent, ADD_CARD_REQUEST_CODE);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
     public void navigateToEditCurrentQuestion(View v) {
@@ -148,21 +151,84 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("existing_question", flashcardQuestion.getText().toString());
         intent.putExtra("correct_answer", correctAnswerButton.getText().toString());
         MainActivity.this.startActivityForResult(intent, EDIT_CARD_REQUEST_CODE);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
     public void goToNextQuestion(View v) {
         if (currentDisplayIndex >= allFlashCards.size() - 1)
             return;
+        final Animation slideOutLeftAnim = AnimationUtils.loadAnimation(v.getContext(), R.anim.slide_out_left);
+        slideOutLeftAnim.setAnimationListener(new SlideOutLeftAnimationListener(v));
+        flashcardQuestion.startAnimation(slideOutLeftAnim);
+        for (Button button : answerButtons)
+            button.startAnimation(slideOutLeftAnim);
         currentDisplayIndex++;
-        Flashcard nextCard = allFlashCards.get(currentDisplayIndex);
-        setAnswerButtonsAndQuestion(nextCard);
     }
 
     public void goToPreviousQuestion(View v) {
         if (currentDisplayIndex <= 0)
             return;
+        final Animation slideOutRight = AnimationUtils.loadAnimation(v.getContext(), R.anim.slide_out_right);
+        slideOutRight.setAnimationListener(new SlideOutRightAnimationListener(v));
+        flashcardQuestion.startAnimation(slideOutRight);
+        for (Button button : answerButtons)
+            button.startAnimation(slideOutRight);
         currentDisplayIndex--;
-        Flashcard previousCard = allFlashCards.get(currentDisplayIndex);
-        setAnswerButtonsAndQuestion(previousCard);
+    }
+
+    private class SlideOutLeftAnimationListener implements Animation.AnimationListener {
+        private View view;
+
+        public SlideOutLeftAnimationListener(View v) {
+            view = v;
+        }
+
+        @Override
+        public void onAnimationStart(Animation animation) {
+
+        }
+
+        @Override
+        public void onAnimationEnd(Animation animation) {
+            Flashcard nextCard = allFlashCards.get(currentDisplayIndex);
+            setAnswerButtonsAndQuestion(nextCard);
+            final Animation slideInRight = AnimationUtils.loadAnimation(view.getContext(), R.anim.slide_in_right);
+            flashcardQuestion.startAnimation(slideInRight);
+            for (Button b : answerButtons)
+                b.startAnimation(slideInRight);
+        }
+
+        @Override
+        public void onAnimationRepeat(Animation animation) {
+
+        }
+    }
+
+    private class SlideOutRightAnimationListener implements Animation.AnimationListener {
+        private View view;
+
+        public SlideOutRightAnimationListener(View v) {
+            view = v;
+        }
+
+        @Override
+        public void onAnimationStart(Animation animation) {
+
+        }
+
+        @Override
+        public void onAnimationEnd(Animation animation) {
+            Flashcard nextCard = allFlashCards.get(currentDisplayIndex);
+            setAnswerButtonsAndQuestion(nextCard);
+            final Animation slideInLeft = AnimationUtils.loadAnimation(view.getContext(), R.anim.slide_in_left);
+            flashcardQuestion.startAnimation(slideInLeft);
+            for (Button b : answerButtons)
+                b.startAnimation(slideInLeft);
+        }
+
+        @Override
+        public void onAnimationRepeat(Animation animation) {
+
+        }
     }
 }

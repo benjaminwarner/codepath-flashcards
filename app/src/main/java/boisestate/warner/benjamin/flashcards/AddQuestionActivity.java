@@ -35,6 +35,7 @@ public class AddQuestionActivity extends AppCompatActivity {
     public void backButtonClicked(View v) {
         setResult(RESULT_CANCELED);
         finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 
     public void saveButtonClicked(View v) {
@@ -55,5 +56,6 @@ public class AddQuestionActivity extends AppCompatActivity {
         data.putExtra("wrong_answer2", wrongAnswer2Text);
         setResult(RESULT_OK, data);
         finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }
