@@ -5,6 +5,34 @@
 FlashCards is an app that allows a user to test their knowledge for 
 a random assortment of facts.
 
+## Lab 4
+
+### App Description
+
+Lab 4 further stylizes the app by adding animations when the user performs
+any updates to the screen (going to a new question, adding/editing questions).
+
+### App Usage
+
+<img src="app-usage_lab4.gif" width=500><br>
+
+### Required User Stories
+
+- [x] 1. User sees a transition animation when going from the main screen to the add card screen.
+- [ ] 2. User sees a reveal animation when the flash card is tapped and the answer is shown (N/A because each question is multiple choice).
+- [x] 3. User sees flashcards animating in / out when the 'next' and 'previous' button is tapped.
+
+### Optional
+
+- [ ] 1. Extra styling is added
+- [ ] 1. User sees a countdown timer for each question
+- [ ] 1. User sees a 'card flip' animation when the card is tapped
+- [ ] 1. User sees a celebration animation with confetti when they answer a question correctly
+
+### Unique User Stories
+
+- [x] 1. User sees a color animation when a button is clicked (still a work in progress, but it's mostly there)
+
 ## Lab 3
 
 ### App Description
