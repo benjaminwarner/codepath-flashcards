@@ -1,9 +1,17 @@
 package boisestate.warner.benjamin.flashcards;
 
+import android.animation.Animator;
+import android.animation.ArgbEvaluator;
+import android.animation.ValueAnimator;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.TransitionDrawable;
+import android.renderscript.Sampler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewAnimationUtils;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
@@ -124,13 +132,44 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void incorrectAnswerClicked(View v) {
-        Button incorrectButton = (Button)v;
-        incorrectButton.setBackground(getDrawable(R.drawable.incorrect_answer_button_shape));
-        correctAnswerButton.setBackground(getDrawable(R.drawable.correct_answer_button_shape));
+        int colorFrom = getResources().getColor(R.color.colorNeutralAnswer);
+        int correctColor = getResources().getColor(R.color.colorCorrectAnswer);
+        int incorrectColor = getResources().getColor(R.color.colorInCorrectAnswer);
+        ValueAnimator correctColorAnimation = ValueAnimator.ofObject(new ArgbEvaluator(), colorFrom, correctColor);
+        ValueAnimator incorrectColorAnimation = ValueAnimator.ofObject(new ArgbEvaluator(), colorFrom, incorrectColor);
+
+        final Button incorrectButton = (Button)v;
+        correctColorAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animator) {
+                correctAnswerButton.setBackgroundColor((int)animator.getAnimatedValue());
+            }
+        });
+
+        incorrectColorAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                incorrectButton.setBackgroundColor((int)animation.getAnimatedValue());
+            }
+        });
+        correctColorAnimation.setDuration(500);
+        correctColorAnimation.start();
+        incorrectColorAnimation.setDuration(500);
+        incorrectColorAnimation.start();
     }
 
     public void correctAnswerClicked(View v) {
-        correctAnswerButton.setBackground(getDrawable(R.drawable.correct_answer_button_shape));
+        int colorFrom = getResources().getColor(R.color.colorNeutralAnswer);
+        int correctColor = getResources().getColor(R.color.colorCorrectAnswer);
+        ValueAnimator animation = ValueAnimator.ofObject(new ArgbEvaluator(), colorFrom, correctColor);
+        animation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                correctAnswerButton.setBackgroundColor((int)animation.getAnimatedValue());
+            }
+        });
+        animation.setDuration(500);
+        animation.start();
     }
 
     public void backgroundClicked(View v) {
